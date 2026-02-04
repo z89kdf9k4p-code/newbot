@@ -140,7 +140,7 @@ SHOP_LABELS = {
 def get_role_kb(lang: str = "RU"):
     labels = ROLE_LABELS.get(lang, ROLE_LABELS["RU"])
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=labels["Шереметьевская"]), KeyboardButton(text=labels["Таллинское"])]],
+        keyboard=[[KeyboardButton(text=labels["courier"]), KeyboardButton(text=labels["picker"])]],
         resize_keyboard=True
     )
 
@@ -148,7 +148,7 @@ def get_role_kb(lang: str = "RU"):
 def get_shop_kb(lang: str = "RU"):
     labels = SHOP_LABELS.get(lang, SHOP_LABELS["RU"])
     return ReplyKeyboardMarkup(
-        keyboard=[[KeyboardButton(text=labels["Шереметьевская"]), KeyboardButton(text=labels["Таллинское"])]],
+        keyboard=[[KeyboardButton(text=labels["courier"]), KeyboardButton(text=labels["picker"])]],
         resize_keyboard=True
     )
 

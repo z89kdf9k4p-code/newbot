@@ -1064,9 +1064,23 @@ async def admin_faq_edit(message: Message):
 
 
 @router.errors()
-async def on_error(event, exception):
-    logger.error("Unhandled exception: %s", exception)
+async def on_error(event, exception=None):
+    """Aiogram 3.x error handler.
+
+    В разных сборках aiogram/обёртках хостингов хэндлер ошибок может вызываться
+    либо как (event), либо как (event, exception). Делаем сигнатуру устойчивой.
+    """
+
+    exc = exception
+    if exc is None:
+        # ErrorEvent имеет поле .exception
+        exc = getattr(event, "exception", None)
+
+    logger.error("Unhandled exception: %s", exc)
     traceback.print_exc()
+
+    # Не роняем обработчик
+    return True
 
 
 # -------------------------
